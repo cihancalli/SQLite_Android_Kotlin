@@ -10,13 +10,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val dbHelper = DBHelper(this)
 
-        var persons = Persons(1,
-            "Çallı",
-            "05450000000",
-            27,
-            1.65)
+        var persons = Persons(2,
+            "Cihan Çallı",
+            "05450000001",
+            29,
+            1.55)
 
         //PersonsDAO().PersonAdd(dbHelper,persons)
+        PersonsDAO().PersonUpdate(dbHelper,persons)
         val personList = PersonsDAO().AllPerson(dbHelper)
 
         for (p in personList){

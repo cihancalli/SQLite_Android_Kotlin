@@ -38,4 +38,18 @@ class PersonsDAO {
         return personsArrayList
 
     }
+
+    fun PersonUpdate(dbHelper:DBHelper,persons: Persons){
+        val db = dbHelper.writableDatabase
+        val values = ContentValues()
+        values.put("person_name",persons.person_name)
+        values.put("person_number",persons.person_number)
+        values.put("person_age",persons.person_age)
+        values.put("person_height",persons.person_height)
+
+        db.update("persons",values,"person_id=?", arrayOf(persons.person_id.toString()))
+        //db.update("persons",values,"person_id=? and person_name=? ", arrayOf(persons.person_id.toString(),persons.person_name))
+        db.close()
+    }
+
 }
