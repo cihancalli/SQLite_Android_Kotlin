@@ -90,6 +90,19 @@ class PersonsDAO {
         return personsArrayList
     }
 
+    @SuppressLint("Range")
+    fun SaveCheck(dbHelper:DBHelper,keyWord:String) : Int{
+        var result = 0
+        val db = dbHelper.writableDatabase
+        val cursor = db.rawQuery("SELECT count(*) AS result FROM persons WHERE person_name='$keyWord'",null)
+        while (cursor.moveToNext()){
+            result = cursor.getInt(cursor.getColumnIndex("result"))
+        }
+
+
+        return  result
+    }
+
 
 
 }

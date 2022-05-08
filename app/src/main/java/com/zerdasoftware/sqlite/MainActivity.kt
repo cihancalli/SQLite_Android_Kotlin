@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         //val personList = PersonsDAO().AllPerson(dbHelper)
         //val personList = PersonsDAO().PersonSerach(dbHelper,"Cihan")
         val personList = PersonsDAO().RandomGetPerson(dbHelper)
-
+        val result = PersonsDAO().SaveCheck(dbHelper,"Cihan Çallı")
+        Log.e("result ",result.toString())
+        /*
         for (p in personList){
             Log.e("*******","*******")
             Log.e("ID ",p.person_id.toString())
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             Log.e("Age ",p.person_age.toString())
             Log.e("Height ",p.person_height.toString())
         }
+         */
 
     }
 }
