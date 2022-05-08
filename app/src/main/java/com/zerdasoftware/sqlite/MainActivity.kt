@@ -2,6 +2,7 @@ package com.zerdasoftware.sqlite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,11 +11,22 @@ class MainActivity : AppCompatActivity() {
         val dbHelper = DBHelper(this)
 
         var persons = Persons(1,
-            "Cihan",
-            "05350000000",
-            21,
-            1.75)
+            "Çallı",
+            "05450000000",
+            27,
+            1.65)
 
-        PersonsDAO().PersonAdd(dbHelper,persons)
+        //PersonsDAO().PersonAdd(dbHelper,persons)
+        val personList = PersonsDAO().AllPerson(dbHelper)
+
+        for (p in personList){
+            Log.e("*******","*******")
+            Log.e("ID ",p.person_id.toString())
+            Log.e("Name ",p.person_name)
+            Log.e("Number ",p.person_number)
+            Log.e("Age ",p.person_age.toString())
+            Log.e("Height ",p.person_height.toString())
+        }
+
     }
 }
