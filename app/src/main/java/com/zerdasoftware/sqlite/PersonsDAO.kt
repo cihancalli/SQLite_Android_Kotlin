@@ -72,6 +72,24 @@ class PersonsDAO {
         return personsArrayList
     }
 
+    @SuppressLint("Range")
+    fun RandomGetPerson(dbHelper:DBHelper) : ArrayList<Persons>{
+
+        val personsArrayList = ArrayList<Persons>()
+        val db = dbHelper.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM persons ORDER BY RANDOM() LIMIT 2",null)
+
+        while (cursor.moveToNext()){
+            val person = Persons(cursor.getInt(cursor.getColumnIndex("person_id")),
+                cursor.getString(cursor.getColumnIndex("person_name")),
+                cursor.getString(cursor.getColumnIndex("person_number")),
+                cursor.getInt(cursor.getColumnIndex("person_age")),
+                cursor.getDouble(cursor.getColumnIndex("person_height")))
+            personsArrayList.add(person)
+        }
+        return personsArrayList
+    }
+
 
 
 }

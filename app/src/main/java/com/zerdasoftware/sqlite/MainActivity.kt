@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
         //PersonsDAO().PersonUpdate(dbHelper,persons)
         //PersonsDAO().PersonDelete(dbHelper,1)
         //val personList = PersonsDAO().AllPerson(dbHelper)
-        val personList = PersonsDAO().PersonSerach(dbHelper,"Cihan")
+        //val personList = PersonsDAO().PersonSerach(dbHelper,"Cihan")
+        val personList = PersonsDAO().RandomGetPerson(dbHelper)
 
         for (p in personList){
             Log.e("*******","*******")
