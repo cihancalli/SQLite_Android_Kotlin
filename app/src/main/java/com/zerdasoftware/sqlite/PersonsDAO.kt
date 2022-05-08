@@ -32,11 +32,7 @@ class PersonsDAO {
                 cursor.getDouble(cursor.getColumnIndex("person_height")))
             personsArrayList.add(person)
         }
-
-
-
         return personsArrayList
-
     }
 
     fun PersonUpdate(dbHelper:DBHelper,persons: Persons){
@@ -57,5 +53,25 @@ class PersonsDAO {
         db.delete("persons","person_id=?",arrayOf(person_id.toString()))
         db.close()
     }
+
+    @SuppressLint("Range")
+    fun PersonSerach(dbHelper:DBHelper,keyWord:String) : ArrayList<Persons>{
+
+        val personsArrayList = ArrayList<Persons>()
+        val db = dbHelper.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM persons WHERE person_name like '%$keyWord%'",null)
+
+        while (cursor.moveToNext()){
+            val person = Persons(cursor.getInt(cursor.getColumnIndex("person_id")),
+                cursor.getString(cursor.getColumnIndex("person_name")),
+                cursor.getString(cursor.getColumnIndex("person_number")),
+                cursor.getInt(cursor.getColumnIndex("person_age")),
+                cursor.getDouble(cursor.getColumnIndex("person_height")))
+            personsArrayList.add(person)
+        }
+        return personsArrayList
+    }
+
+
 
 }
