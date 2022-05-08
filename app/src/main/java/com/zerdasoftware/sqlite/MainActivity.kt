@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
             1.55)
 
         //PersonsDAO().PersonAdd(dbHelper,persons)
-        PersonsDAO().PersonUpdate(dbHelper,persons)
+        //PersonsDAO().PersonUpdate(dbHelper,persons)
+        PersonsDAO().PersonDelete(dbHelper,1)
         val personList = PersonsDAO().AllPerson(dbHelper)
 
         for (p in personList){

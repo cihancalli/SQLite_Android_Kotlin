@@ -52,4 +52,10 @@ class PersonsDAO {
         db.close()
     }
 
+    fun PersonDelete(dbHelper:DBHelper,person_id:Int){
+        val db = dbHelper.writableDatabase
+        db.delete("persons","person_id=?",arrayOf(person_id.toString()))
+        db.close()
+    }
+
 }
