@@ -21,9 +21,16 @@ class MainActivity : AppCompatActivity() {
         //PersonsDAO().PersonDelete(dbHelper,1)
         //val personList = PersonsDAO().AllPerson(dbHelper)
         //val personList = PersonsDAO().PersonSerach(dbHelper,"Cihan")
-        val personList = PersonsDAO().RandomGetPerson(dbHelper)
-        val result = PersonsDAO().SaveCheck(dbHelper,"Cihan Çallı")
-        Log.e("result ",result.toString())
+        //val personList = PersonsDAO().RandomGetPerson(dbHelper)
+        //val result = PersonsDAO().SaveCheck(dbHelper,"Cihan Çallı")
+        val person = PersonsDAO().GetPerson(dbHelper,2)
+        Log.e("ID ",person?.person_id.toString())
+        Log.e("Name ",person?.person_name.toString())
+        Log.e("Number ",person?.person_number.toString())
+        Log.e("Age ",person?.person_age.toString())
+        Log.e("Height ",person?.person_height.toString())
+
+        //Log.e("result ",result.toString())
         /*
         for (p in personList){
             Log.e("*******","*******")

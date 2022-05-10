@@ -103,6 +103,21 @@ class PersonsDAO {
         return  result
     }
 
+    @SuppressLint("Range")
+    fun GetPerson(dbHelper:DBHelper,person_id:Int) : Persons? {
 
+        var getPerson:Persons? = null
+        val db = dbHelper.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM persons WHERE person_id=$person_id",null)
+
+        while (cursor.moveToNext()){
+            getPerson = Persons(cursor.getInt(cursor.getColumnIndex("person_id")),
+                cursor.getString(cursor.getColumnIndex("person_name")),
+                cursor.getString(cursor.getColumnIndex("person_number")),
+                cursor.getInt(cursor.getColumnIndex("person_age")),
+                cursor.getDouble(cursor.getColumnIndex("person_height")))
+        }
+        return getPerson
+    }
 
 }
